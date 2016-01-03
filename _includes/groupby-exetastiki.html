@@ -1,6 +1,7 @@
 <div id="courses" class="groupby">
    {% assign data_exetastiki = include.data %}
    {% assign courses_data = site.data.[data_exetastiki] | group_by: include.tag %}
+<!--    In the data fiel we must have the class by order that we want them to appear -->
    <div class="category-links">
          {% for course in courses_data %}    
                   <a href="#{{ course.name }}">{{ course.name }}</a>
