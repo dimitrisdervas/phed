@@ -1,2 +1,2 @@
-# course
-Courses website
+# phed
+Phed Auth Courses
