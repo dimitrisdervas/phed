@@ -3,7 +3,7 @@
    {% assign courses_data = site.data.[data_exetastiki] | group_by: include.tag %}
    <div class="category-links">
          {% for course in courses_data %}    
-                  <a href="#{{ course.name | slugify }}">{{ course.name }}</a>
+                  <a href="#{{ course.name }}">{{ course.name }}</a>
           {% endfor%}
    </div>
 <!--  for listjs   copied from http://codepen.io/jamesbarnett/pen/kcwzq -->
