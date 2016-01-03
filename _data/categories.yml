@@ -1,0 +1,9 @@
+- name: none
+  gr: Όλα 
+
+- name: sports
+  gr: Άθληση
+  
+
+- name: music
+  gr: Μουσική

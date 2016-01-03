@@ -1,0 +1,19 @@
+---
+layout: default
+---
+<h1>Εξεταστική</h1>
+<div class="fronpage">
+ 
+  {% for year in site.data.phed-data %}
+   <div class="year-item">
+   <div class="year">{{ year.year }}</div>
+   {% for class in (1..10) %}
+      <div class="class">
+         <a href="{{site.baseurl}}/exetastiki_{{ year.alias }}#{{ year.class }}{{ class }}"> {{ year.class }}{{ class }}</a>
+        </div>
+      {% endfor %}
+     </div>
+   {% endfor %}
+</div>
+
+<h1><a href="{{site.baseurl}}/epilegomena">Επιλεγόμενα</a></h1>

@@ -1,0 +1,45 @@
+/*  */
+/* Colors */
+/*  */
+$grey: #999999;
+$light-grey: #E7E7E7;
+$lighter-grey: #f3f3f3;
+$black: #1E1E1E;
+$blue: #428bca;
+$light-blue: #4280A6;
+$white: #ffffff;
+$light-red: #BD6E6E;
+$pink: #F21C7D;
+$light-pink: #F999A7;
+$red: #BB135F;
+/*  */
+/* Defaults Variables for colors*/
+/*  */
+/* Body */
+$bg-body: $lighter-grey;
+$text-color: lighten( $black, 30%);
+$bg-content: $white;
+/* Links */
+$link-color: $red;
+$hover-color: $light-blue;
+/* Blocks */
+$border-color: $light-grey;
+/* Header */
+$header-bg: $white;
+$logo-link: $pink;
+$menu-link: $grey;
+$menu-link-hover: $black;
+$header-text: $white;
+/* Frontpage */
+$cards-bg: $white;
+$button-text: $white;
+/* Pages */
+$page-title: $light-grey;
+/* School */
+$program-hover: $light-pink;
+/* Blocks Background */
+$block-bg: lighten( $black, 85%);
+/* Booking */
+$submit-bg: $blue;
+/* Footer */
+$footer-bg: $grey;

@@ -1,0 +1,218 @@
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import 
+   "sass/susy-config",
+   "bower_components/susy/sass/susy",
+   "bower_components/sass-toolkit/stylesheets/toolkit"
+   ;
+@import 
+   "sass/colors",
+   "sass/layout",
+   "sass/frontpage",
+   "sass/header",
+   "sass/school",
+   "sass/course"
+   ;
+/*  */
+/* Fonts */
+/*  */
+$font-family-text: Roboto slab, Helvetica, Arial, sans-serif;
+$font-family-heading: Open sans, Helvetica, Arial, sans-serif;
+
+
+/* Global */
+/*  */
+body {
+   font-family: $font-family-text;
+   background: $bg-body;
+   color: $text-color;
+}
+h1,h2,h3,h4,h5,h6 {
+   font-family: $font-family-heading;
+}
+a {
+   text-decoration: none;
+   color: $link-color;
+}
+img {
+   width: 100%;
+}
+
+ul {
+   padding: 0;
+}
+
+
+.footer-wrapper {
+   background: $footer-bg;
+}
+/* SearchBar */
+.search-field {
+     input[type="text"] {
+        padding: 10px;
+        width: 100%;
+        font-size: 18px;
+        border: none;
+        border-bottom: solid 2px #c9c9c9;
+        -webkit-transition: border 0.3s;
+        -moz-transition: border 0.3s;
+        -o-transition: border 0.3s;
+        transition: border 0.3s;
+       }
+    input[type="text"] {
+       input[type="text"]:focus, 
+       input[type="text"].focus {
+        border-bottom: solid 2px #969696;
+         }
+      }
+
+   .filter-terms, 
+   .filter-subterms {
+      float: left;
+      padding: 10px;
+      margin-top: 0.5em;
+      font-size: 28px;
+      font-weight: bold;
+   }
+   .hide {
+      display: none;
+   }
+}
+
+/* Course - School layout */
+section {
+   background: #fff;
+   padding: 3em 1em;
+   border-radius: 6px;
+}
+.page-title {
+   font-size: 48px;
+   padding: 2rem;
+   text-align: center;
+   font-weight: bold;
+}
+.section-title {
+   padding: 0 0 0.4em;
+   margin: 0 0 1em;
+   border-bottom: 1px solid #ccc;
+   font-size: 24px;
+}
+/* FRONTPAGE */
+.fronpage {
+    display: flex;
+    /* margin: 0 20px; */
+   .year-item {
+       display: flex;
+       flex-direction: column;
+       margin: 0 20px;
+       background: #fff;
+       padding: 10px;
+   }
+   .year {
+       font-size: 20px;
+       font-weight: bold;
+       line-height: 2;
+       margin-bottom: 10px;
+   }
+}
+
+.category-links {
+    display: flex;
+    justify-content: space-around;
+   a {
+     background: #fff;
+     padding: 5px 15px;
+   }
+   a:hover {
+      
+   }
+}
+/* EPILEGOMENA */
+.category {
+    display: flex;
+}
+.category-title {
+       font-size: 34px;
+    border-bottom: 1px solid #ccc;
+    background: #636363;
+    color: #fff;
+    padding: 15px;
+}
+
+.subcategory-item {
+  flex-grow: 1;
+   background: #E8E8E8;
+    margin: 5px;
+}
+.subcategory-title {
+font-size: 26px;
+    padding: 10px;
+    /* line-height: 2; */
+    color: #CA3131;
+    font-weight: bold;
+    text-align: center;
+    background: #D4D4D4;
+    margin-bottom: 20px;
+}
+.subcategory-twodeep-item {
+   display: flex;
+   flex-direction: column;
+   margin: 0 15px 15px;
+   .subcategory-twodeep-title {
+       font-size: 24px;
+       font-weight: bold;
+       text-align: center;
+      margin-bottom: 15px;
+   }
+   .groupbby-categories {
+       font-size: 14px;
+       padding: 0 1rem 1rem;
+       font-weight: bold;
+       display: flex;
+       justify-content: space-between;
+   }
+}
+.groupby-items {
+    margin-bottom: 20px;
+    background: #F7F7F7;
+    padding: 8px;
+}
+.groupby-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #8E219A;
+       margin-bottom: 8px;
+}
+.groupby-categories {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+/* EXETASTIKI */
+.category--exetastiki {
+    display: flex;
+    flex-direction: column;
+}
+.subcategory-item--exetastiki {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 5px;
+    flex-direction: column;
+}
+.subcategory-title--exetastiki {
+   @include span ( 3 of 12);
+   background: #EFEFEF;
+   line-height: 3;
+}
+.subcategory-subitem--exetastiki {
+    float: left;
+    width: 100%;
+}
+.groupby-title--exetastiki {
+    font-size: 20px;
+    color: #ab1386;
+    font-weight: bold;
+   span {
+    font-size: 16px;
+    color: #525252;
+   }
+}

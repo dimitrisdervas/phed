@@ -1,0 +1,52 @@
+<div id="courses" class="groupby">
+   {% assign data_exetastiki = include.data %}
+   {% assign courses_data = site.data.[data_exetastiki] | group_by: include.tag %}
+   <div class="category-links">
+         {% for course in courses_data %}    
+                  <a href="#{{ course.name | slugify }}">{{ course.name }}</a>
+          {% endfor%}
+   </div>
+<!--  for listjs   copied from http://codepen.io/jamesbarnett/pen/kcwzq -->
+ <ul id="courses-ul" >     
+   {% for course in courses_data %}
+    
+      <li>  
+         <div id="{{ course.name }}" class="category-title">{{ course.name }}</div>
+         
+         <div class="category--exetastiki">
+         {% assign courses_team = course.items | group_by: include.tag2 %}
+         {% assign courses_team_data = courses_team  | date: '%A %B %d %Y' %}
+         {% for subcategory_onedeep in courses_team_data %}  
+            
+             
+         <div class="subcategory-item--exetastiki">
+      
+            
+                  {% for cat in subcategory_onedeep.items  %}
+<!--             DATE -->
+            <div class="subcategory-subitem--exetastiki">      
+               <div class="subcategory-title--exetastiki">{{ cat.fulldate }}</div>
+                      <div class="groupby-items--exetastiki">
+                         <div class="groupby-text--exetastiki">
+                            <div class="groupby-title--exetastiki">{{ cat.course }} <span>({{ cat.type }})</span></div>
+                         </div>
+                         <div class="groupby-school-categories--exetastiki">
+                            <div class="groupby-categories--exetastiki">
+                               <span class="categories-place--exetastiki">{{ cat.place }}</span>
+                               <span class="categories- classroom--exetastiki">{{ cat.time }}</span>
+                            </div>
+                         </div>
+                      </div> 
+               </div>
+                  {% endfor %}
+
+<!--             SUBCATEGORY ITEM -->
+            </div>
+           {% endfor %}
+            
+<!--             SUBCATEGOrY -->
+         </div>
+       </li>  
+    {% endfor %} 
+  </ul>
+</div>

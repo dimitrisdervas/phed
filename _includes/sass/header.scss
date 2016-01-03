@@ -1,0 +1,30 @@
+header {
+   margin-bottom: 2em;
+   background: $header-bg;
+   .logo {
+      @include span( 4 of 12 no-gutters );
+      padding: 1px;
+      a {
+         color: $logo-link;
+      }
+   }
+   .menu {
+      @include span( 8  at 4 of 12);
+      .menu-item {
+            float: left;
+            display: inline;
+            list-style: none;
+            padding: 10px;
+            a {
+               color: $menu-link;
+            }
+            &:hover {
+               cursor: pointer;
+               background: #ccc;
+               a {
+                  color: $menu-link-hover;
+               }
+            }
+         }
+      }
+   }  

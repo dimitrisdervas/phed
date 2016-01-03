@@ -1,0 +1,10 @@
+ - year: "A΄ έτος"
+   class: "Α"
+   alias: a
+ - year: "Β΄ έτος"
+   class: "Β" 
+   alias: b
+ - year: "Γ΄ έτος"
+   class: "Γ"
+   alias: c
+ 

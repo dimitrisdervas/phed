@@ -1,0 +1,65 @@
+- class: "ΔΙΔΑΚΤΙΚΗ ΤΗΣ ΠΑΙΔΑΓΩΓΙΚΗΣ ΓΥΜΝΑΣΤΙΚΗΣ"
+  year: A
+  school-year: "2015-16"
+  schedule:
+   -  day: Δευτέρα
+      times:
+       - time: 10.30-12.00
+         classes:
+          - class: A4
+       - time: 12.30-14.00
+         classes:
+          - class: A8
+       - time: 12.15-13.00
+         classes:
+          - class: Α5
+          - class: Α6
+   -  day: Τρίτη
+      times:
+       - time: 09.00-10.30
+         classes:
+         - class: A5
+       - time: 10.45-12.15
+         classes:
+          - class: Α6
+       - time: 12.30-14.00
+         classes:
+          - class: A7
+   -  day: Τετάρτη
+      times:
+       - time: 10.45-12.15
+         classes:
+          - class: Α9
+       - time: 12.30-14.00
+         classes:
+          - class: Α10
+   -  day: Πέμπτη
+      times:
+        - time: 11.15-12.00
+          classes:
+            - class: Α9
+            - class: Α10
+        - time: 12.15-13.00
+          classes:
+           - class: Α7
+           - class: Α8
+        - time: 13.15-14.00
+          classes:
+           - class: Α1
+           - class: Α2
+   -  day: Παρασκευή
+      times:
+        - time: 09.00-10.30
+          classes:
+            - class: A3
+        - time: 10.45-12.15
+          classes:
+            - class: Α1
+        - time: 12.30-14.00 
+          classes:
+            - class: A2
+- class: "ΔΙΔΑΚΤΙΚΗ	ΤΩΝ	ΕΛΛΗΝΙΚΩΝ	ΠΑΡΑΔΟΣΙΑΚΩΝ	ΧΟΡΩΝ"
+  year: A
+  school-year: "2015-16"
+  schedule:
+   -  day: Δευτέρα
