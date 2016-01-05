@@ -45,39 +45,6 @@ ul {
 .footer-wrapper {
    background: $footer-bg;
 }
-/* SearchBar */
-.search-field {
-     input[type="text"] {
-        padding: 10px;
-        width: 100%;
-        font-size: 18px;
-        border: none;
-        border-bottom: solid 2px #c9c9c9;
-        -webkit-transition: border 0.3s;
-        -moz-transition: border 0.3s;
-        -o-transition: border 0.3s;
-        transition: border 0.3s;
-       }
-    input[type="text"] {
-       input[type="text"]:focus, 
-       input[type="text"].focus {
-        border-bottom: solid 2px #969696;
-         }
-      }
-
-   .filter-terms, 
-   .filter-subterms {
-      float: left;
-      padding: 10px;
-      margin-top: 0.5em;
-      font-size: 28px;
-      font-weight: bold;
-   }
-   .hide {
-      display: none;
-   }
-}
-
 /* Course - School layout */
 section {
    background: #fff;
@@ -125,6 +92,9 @@ section {
    a:hover {
       
    }
+}
+#courses-ul {
+   list-style: none;
 }
 /* EPILEGOMENA */
 .category {
@@ -181,6 +151,24 @@ font-size: 26px;
     font-weight: bold;
     color: #8E219A;
        margin-bottom: 8px;
+}
+/* http://www.webdesignerdepot.com/2012/11/how-to-create-a-simple-css3-tooltip/ */
+.tooltip{
+    display: inline;
+    position: relative;
+}
+.tooltip:hover:after {
+    content: attr(title);
+    background: #868686;
+    border-radius: 5px;
+    bottom: 90%;
+    color: #fff;
+    content: attr(title);
+    left: 20%;
+    padding: 5px 15px;
+    position: absolute;
+    z-index: 98;
+    width: 100px;
 }
 .groupby-categories {
     font-size: 12px;

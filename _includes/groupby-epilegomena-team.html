@@ -15,7 +15,7 @@
          <div class="category">
 <!--             TIME -->
          {% assign courses_team = course.items | group_by: include.tag2 %}
-         {% assign courses_team_data = courses_team | sort: "name" %}
+         {% assign courses_team_data = courses_team %}
          {% for subcategory_onedeep in courses_team_data %}  
             
              
@@ -26,12 +26,16 @@
               {% for subcategory_two in subcategory_twodeep %}  
             
             <div class="subcategory-twodeep-item">
-               <div class="subcategory-twodeep-title"> Ομάδα {{ subcategory_two.name }}</div>  
+               <div class="subcategory-twodeep-title">{{ subcategory_two.name }}</div>  
                
                   {% for cat in subcategory_two.items %}
                       <div class="groupby-items">
                          <div class="groupby-text">
-                            <div class="groupby-title">{{ cat.title }}</div>
+                            {% if {{cat.url}} != nill %}
+                               <div class="groupby-title"><a href="{{cat.url}}" title="e-tefaa" class="tooltip">{{ cat.title }}</a></div>
+                            {% else %}
+                               <div class="groupby-title">{{ cat.title }}</div>
+                            {% endif %}
                          </div>
                          <div class="groupby-school-categories">
                             <div class="groupby-categories">
