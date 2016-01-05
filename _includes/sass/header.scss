@@ -28,3 +28,10 @@ header {
          }
       }
    }  
+.menu-group {
+    display: flex;
+    align-items: center;
+}
+.menu-title {
+    padding: 0 5px;
+}
