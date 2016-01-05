@@ -10,7 +10,7 @@
    {% for course in courses_data %}
     
       <li>  
-         <div id="{{ course.name }}" class="category-title">{{ course.name }}</div>
+         <div id="{{ course.name | slugify }}" class="category-title">{{ course.name }}</div>
          
          <div class="category">
 <!--             TIME -->
