@@ -107,7 +107,27 @@ section {
     color: #fff;
     padding: 15px;
 }
-
+.team--title {
+    font-size: 20px;
+}
+.team--description {
+    font-size: 18px;
+    line-height: 2;
+}
+.to-top {
+   float: right;
+   a {
+    color: #ccc;
+    font-size: 16px;
+    padding: 5px 8px;
+    border-radius: 3px;
+    background: transparent;
+   }
+   a:hover {
+      color: #AB1386;
+      background: #F3F3F3;
+   }
+}
 .subcategory-item {
   flex-grow: 1;
    background: #E8E8E8;
@@ -204,3 +224,44 @@ font-size: 26px;
     color: #525252;
    }
 }
+/* ALLSEMESTER */
+
+#allsemester {
+   .category {
+      display: flex;
+      flex-direction: column;
+   }
+   .groupby-items {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+   }
+   .groupby-text {
+   }
+   
+   .groupby-categories {
+     font-size: 14px;
+   }
+   .categories-place {
+
+    color: #6B6B6B;
+   }
+}
+/* SEASONS */
+.seasons {
+    display: flex;
+    align-self: flex-end;
+      .item {
+       padding: 5px;
+       border-radius: 3px;
+      }
+   }
+   .seasonwinter {
+       background: #D4D4D4;
+   }
+   .seasonspring {
+       background: #F5DC00;
+   }
+   .season {
+      background: transparent;
+   }

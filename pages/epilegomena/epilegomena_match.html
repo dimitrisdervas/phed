@@ -1,0 +1,17 @@
+---
+layout: default
+---
+epilegomena,epilegomena_jan_2016,id
+{% for course-all in site.data.epilegomena_exetast_jan_2016 %}
+   {% for course-epilegomeno in site.data.e-tefaa %}
+   {% if course-epilegomeno.course == course-all.course %} 
+   <div>where: {{ course-epilegomeno.course }}
+      <span> match={{ course-epilegomeno.team }}</span> 
+      <span> match={{ course-all.course}}</span> 
+</div>
+   {% endif %}
+<!--      <div>where: {{ course-epilegomeno.title | where: "course-epilegomeno.title", "course-all.course" }}
+      <span> match={{ course.course}}</span> </div> -->
+   {% endfor %}
+      
+{% endfor %}

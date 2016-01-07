@@ -1,0 +1,54 @@
+<div id="courses" class="groupby">
+   {% assign epilegomenadata = site.data.epilegomena_allsemesters | group_by: include.season %}
+<!--    GROUP BY SEASON -->
+   {% assign epilegomenadata_season = epilegomenadata | where: "name", include.season %}
+   {% for coursesdata in epilegomenadata_season %}
+   <!--    GROUP BY DAY -->
+      {% assign coursesdata-unsorted = coursesdata.items | sort: "day_for_order" %}
+      {% assign courses_data = coursesdata-unsorted  | group_by: "day" %}
+   {% endfor %}
+   <div class="category-links">
+         {% for course in courses_data %}    
+                  <a href="#{{ course.name | slugify }}">{{ course.name }}</a>
+          {% endfor%}
+   </div>
+<!--  for listjs   copied from http://codepen.io/jamesbarnett/pen/kcwzq -->
+ <ul id="courses-ul" >     
+   {% for course in courses_data %}
+    
+      <li>  
+         <div id="{{ course.name | slugify }}" class="category-title">{{ course.name }}<span class="to-top"><a href="#page-title">back to top</a></span></div>
+         
+         <div class="category">
+<!--             TIME -->
+         {% assign courses_team = course.items | group_by: include.time %}
+         {% assign courses_team_data = courses_team | sort: "name" %}
+         {% for subcategory_onedeep in courses_team_data %}  
+            
+             
+         <div class="subcategory-item">
+           <div class="subcategory-title">{{ subcategory_onedeep.name }}</div>           
+<!-- TEAM -->
+               
+              {% assign subcategory_twodeep = subcategory_onedeep.items | group_by:"team" %}  
+              {% for subcategory_two in subcategory_twodeep %}  
+            
+            <div class="subcategory-twodeep-item">
+               <div class="subcategory-twodeep-title"><a href="{{site.baseurl}}/pages/epilegomena/{{include.season}}/{{page.year}}/epilegomena-{{include.season}}-team/#{{ subcategory_two.name | slugify }}"> Ομάδα {{ subcategory_two.name }}</a></div>
+               
+                 {% include course-template.html %}
+               
+            </div>
+            
+            {% endfor %}
+                
+<!--             SUBCATEGORY ITEM -->
+            </div>
+           {% endfor %}
+            
+<!--             SUBCATEGOrY -->
+         </div>
+       </li>  
+    {% endfor %} 
+  </ul>
+</div>

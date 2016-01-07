@@ -5,26 +5,43 @@
     <div class="logo">
         <a href="{{ site.baseurl }}/"><h2>Active Koala</h2></a>
         </div>
-     <div class="menu">
+     <div  id="page-title" class="menu">
        <div class="menu-group">
         <div class="menu-title">Εξεταστική:</div>
           {% for year in site.data.phed-data %}
             <div class="menu-item">
                <div class="class">
-                  <a href="{{site.baseurl}}/exetastiki_{{ year.alias }}">{{ year.year }}</a>
+                  <a href="{{site.baseurl}}/pages/exetastiki/winter/2015-2016/exetastiki_{{ year.alias }}">{{ year.year }}</a>
                  </div>
               </div>
             {% endfor %}
           </div>
+        
         <div class="menu-group">
-          <div class="menu-title">Επιλεγόμενα:</div>
+          <div class="menu-title">Επιλεγόμενα ανά ομάδα:</div>
            <div class="menu-item" >
-              <a  href="{{site.baseurl}}/epilegomena">ανά ημέρα</a>
+              <a  href="{{site.baseurl}}/pages/epilegomena/winter/2015-2016/epilegomena-winter-team">(χειμερινό εξάμηνο)</a>
            </div>
-           <div class="menu-item" >
-              <a  href="{{site.baseurl}}/epilegomena-team">ανά ομάδα</a>
+            <div class="menu-item" >
+              <a  href="{{site.baseurl}}/pages/epilegomena/spring/2015-2016/epilegomena-spring-team">(εαρινό εξάμηνο)</a>
            </div>
         </div>
+        
+           <div class="menu-group">
+          <div class="menu-title">Επιλεγόμενα ανά ημέρα:</div>
+           <div class="menu-item" >
+              <a  href="{{site.baseurl}}/pages/epilegomena/winter/2015-2016/epilegomena-winter-day">(χειμερινό εξάμηνο)</a>
+           </div>
+              <div class="menu-item" >
+              <a  href="{{site.baseurl}}/pages/epilegomena/spring/2015-2016/epilegomena-spring-day">(εαρινό εξάμηνο)</a>
+           </div>              
+           </div>
+        
+        <div class="menu-group">
+                 <div class="menu-item" >
+                    <a  href="{{site.baseurl}}/pages/epilegomena/epilegomena-allsemester">Επιλεγόμενα ανά εξάμηνο</a>
+                 </div>
+              </div>
      </div>
    </div>
 </header>

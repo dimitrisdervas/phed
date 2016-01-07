@@ -1,0 +1,21 @@
+ {% for cat in subcategory_two.items %}
+                      <div class="groupby-items">
+                         <div class="groupby-text">
+                            {% if {{cat.url}} != nill %}
+                               <div class="groupby-title"><a href="{{cat.url}}" title="e-tefaa" class="tooltip">{{ cat.course }}</a></div>
+                            {% else %}
+                               <div class="groupby-title">{{ cat.course }}</div>
+                            {% endif %}
+                         </div>
+                         
+                         <div class="groupby-categories">
+                               <div class="categories-place">{{ cat.place }}</div>
+                               
+                           <div class="seasons">
+                               <div class="season{{ cat.winter }} item">{{ cat.winter }}</div> 
+                               <div class="season{{ cat.spring }} item">{{ cat.spring }}</div> 
+                            </div>
+
+                         </div>
+                      </div> 
+                  {% endfor %}
