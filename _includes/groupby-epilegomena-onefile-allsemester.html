@@ -3,7 +3,7 @@
    {% assign courses_data = courses_data_unsorted | group_by: "team" %}
    <div class="category-links">
          {% for course in courses_data %}    
-                  <a href="#{{ course.name | slugify }}">Ομάδα {{ course.name }}</a>
+                  <a href="#{{ course.name }}">Ομάδα {{ course.name }}</a>
           {% endfor%}
    </div>
 <!--  for listjs   copied from http://codepen.io/jamesbarnett/pen/kcwzq -->
@@ -11,7 +11,7 @@
    {% for course in courses_data %}
     
       <li>  
-         <div id="{{ course.name | slugify }}" class="category-title">
+         <div id="{{ course.name }}" class="category-title">
             Ομάδα {{ course.name }}
             {% for cat in course.items %}
                {% assign courses-number = forloop.length  %}
@@ -21,7 +21,7 @@
             <span class="to-top"><a href="#page-title">back to top</a></span>
             
             {% for team in site.data.phed-data.epilegomena2013 %}
-               {% assign team-slug = course.name | slugify %}
+               {% assign team-slug = course.name %}
                {% if team.team == team-slug %}
                   <div class="team--title">{{ team.title }}</div>
                   <div class="team--description">{{ team.text }}</div>
@@ -64,7 +64,7 @@
                                <div class="categories-place">Διδάσκων: {{ cat.teacher }}</div>
                               {% endif %}
                                <div class="categories-place">Υπεύθυνος: 
-                                  <a href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-teacher/#{{ cat.rensponsible | slugify }}">{{ cat.rensponsible }}</a>
+                                  <a href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-teacher/#{{ cat.rensponsible }}">{{ cat.rensponsible }}</a>
                                </div>                                  
                             </div>
                             

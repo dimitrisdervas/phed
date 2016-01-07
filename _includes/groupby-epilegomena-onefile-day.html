@@ -9,7 +9,7 @@
    {% endfor %}
    <div class="category-links">
          {% for course in courses_data %}    
-                  <a href="#{{ course.name | slugify }}">{{ course.name }}</a>
+                  <a href="#{{ course.name }}">{{ course.name }}</a>
           {% endfor%}
    </div>
 <!--  for listjs   copied from http://codepen.io/jamesbarnett/pen/kcwzq -->
@@ -17,7 +17,7 @@
    {% for course in courses_data %}
     
       <li>  
-         <div id="{{ course.name | slugify }}" class="category-title">
+         <div id="{{ course.name }}" class="category-title">
             {{ course.name }}
             
             {% include season-template-current.html %}
@@ -39,7 +39,7 @@
               {% for subcategory_two in subcategory_twodeep %}  
             
             <div class="subcategory-twodeep-item">
-               <div class="subcategory-twodeep-title"><a href="{{site.baseurl}}/pages/epilegomena/{{include.season}}/{{page.year}}/epilegomena-{{include.season}}-team/#{{ subcategory_two.name | slugify }}"> Ομάδα {{ subcategory_two.name }}</a></div>
+               <div class="subcategory-twodeep-title"><a href="{{site.baseurl}}/pages/epilegomena/{{include.season}}/{{page.year}}/epilegomena-{{include.season}}-team/#{{ subcategory_two.name }}"> Ομάδα {{ subcategory_two.name }}</a></div>
                
                  {% include course-template.html %}
                

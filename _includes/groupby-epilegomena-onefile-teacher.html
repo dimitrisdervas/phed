@@ -3,7 +3,7 @@
    {% assign courses_data = courses_data_unsorted | group_by: "rensponsible" %}
    <div class="category-links--teacher">
          {% for course in courses_data %}    
-                  <a href="#{{ course.name | slugify }}">{{ course.name }}</a>
+                  <a href="#{{ course.name }}">{{ course.name }}</a>
           {% endfor%}
    </div>
 <!--  for listjs   copied from http://codepen.io/jamesbarnett/pen/kcwzq -->
@@ -11,7 +11,7 @@
    {% for course in courses_data %}
     
       <li>  
-         <div id="{{ course.name | slugify }}" class="category-title">
+         <div id="{{ course.name }}" class="category-title">
             {{ course.name }}
 
             <span class="to-top"><a href="#page-title">back to top</a></span>
@@ -39,7 +39,7 @@
                                {% endif %}                            
                             </div>
                             
-                            <div class="categories-place"><a href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-allsemester/#{{ cat.team | slugify }}">Ομάδα: {{ cat.team }}</a></div>   
+                            <div class="categories-place"><a href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-allsemester/#{{ cat.team }}">Ομάδα: {{ cat.team }}</a></div>   
                             
                             <div class="categories-place">{{ cat.classroom }}</div>
                             

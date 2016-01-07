@@ -9,7 +9,7 @@
    {% endfor %}
    <div class="category-links">
          {% for course in courses_data %}    
-                  <a href="#{{ course.name | slugify }}">Ομάδα {{ course.name }}</a>
+                  <a href="#{{ course.name }}">Ομάδα {{ course.name }}</a>
           {% endfor%}
    </div>
 
@@ -17,7 +17,7 @@
    {% for course in courses_data %}
     
       <li>  
-         <div id="{{ course.name | slugify }}" class="category-title">
+         <div id="{{ course.name }}" class="category-title">
             <div class="team--number">
                
                Ομάδα {{ course.name }} 
@@ -30,7 +30,7 @@
             
             
             {% for team in site.data.phed-data.epilegomena2013 %}
-               {% assign team-slug = course.name | slugify %}
+               {% assign team-slug = course.name %}
                      {% if team.team == team-slug %}
                          <div class="team--title">{{ team.title }}</div>
                          <div class="team--description">{{ team.text }}</div>
