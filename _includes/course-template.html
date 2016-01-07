@@ -2,7 +2,11 @@
                       <div class="groupby-items">
                          <div class="groupby-text">
                             {% if {{cat.url}} != nill %}
-                               <div class="groupby-title"><a href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-allsemester/#{{ cat.id-winter}}">{{ cat.course }}</a></div>
+                               {% if cat.id-winter %}
+                                  <div class="groupby-title"><a href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-allsemester/#{{ cat.id-winter}}">{{ cat.course }}</a></div>
+                                  {% else %}
+                                     <div class="groupby-title"><a href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-allsemester/#{{ cat.id-spring}}">{{ cat.course }}</a></div>   
+                               {% endif %}                               
                             {% else %}
                                <div class="groupby-title">{{ cat.course }}</div>
                             {% endif %}

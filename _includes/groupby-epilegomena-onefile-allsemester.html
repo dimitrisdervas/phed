@@ -43,7 +43,7 @@
                          <div class="groupby-details">
                             
                             
-                      <div id="{{ cat.id-winter}}" class="groupby-title">
+                      <div id="{% if cat.id-winter %}{{ cat.id-winter}}{% else %}{{ cat.id-spring}}{% endif %}" class="groupby-title">
                             {% if {{cat.url}} != nill %}
                                <a href="{{cat.url}}" title="e-tefaa" class="tooltip"> {{forloop.index}}. {{ cat.course }}</a>
                             {% else %}
