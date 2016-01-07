@@ -1,6 +1,51 @@
 ---
-layout: frontpage-layout
+layout: default
 pagename: frontpage
+year: "2015-2016"
+season: winter
 ---
 
 
+<h1>Εξεταστική</h1>
+<div class="fronpage">
+ 
+  {% for year in site.data.phed-data.aliases %}
+   <div class="year-item">
+   <div class="year">{{ year.year }}</div>
+   {% for class in (1..10) %}
+      <div class="class">
+         <a href="{{site.baseurl}}/pages/exetastiki/{{page.season}}/{{page.year}}/exetastiki_{{ year.alias }}#{{ year.class }}{{ class }}"> {{ year.class }}{{ class }}</a>
+        </div>
+      {% endfor %}
+     </div>
+   {% endfor %}
+</div>
+
+        <div class="menu-group">
+          <div class="menu-title">Επιλεγόμενα ανά ομάδα:</div>
+           <div class="menu-item" >
+              <a  href="{{site.baseurl}}/pages/epilegomena/winter/2015-2016/epilegomena-winter-team">(χειμερινό εξάμηνο)</a>
+           </div>
+            <div class="menu-item" >
+              <a  href="{{site.baseurl}}/pages/epilegomena/spring/2015-2016/epilegomena-spring-team">(εαρινό εξάμηνο)</a>
+           </div>
+        </div>
+        
+           <div class="menu-group">
+          <div class="menu-title">Επιλεγόμενα ανά ημέρα:</div>
+           <div class="menu-item" >
+              <a  href="{{site.baseurl}}/pages/epilegomena/winter/2015-2016/epilegomena-winter-day">(χειμερινό εξάμηνο)</a>
+           </div>
+              <div class="menu-item" >
+              <a  href="{{site.baseurl}}/pages/epilegomena/spring/2015-2016/epilegomena-spring-day">(εαρινό εξάμηνο)</a>
+           </div>              
+           </div>
+        
+        <div class="menu-group">
+           <div class="menu-item" >
+              <a  href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-allsemester">Επιλεγόμενα ανά εξάμηνο</a>
+           </div>
+           <div class="menu-item" >
+              <a  href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-teacher">Επιλεγόμενα ανά υπεύθυνο</a>
+           </div>
+        </div>

@@ -8,7 +8,7 @@
      <div  id="page-title" class="menu">
        <div class="menu-group">
         <div class="menu-title">Εξεταστική:</div>
-          {% for year in site.data.phed-data %}
+          {% for year in site.data.phed-data.aliases %}
             <div class="menu-item">
                <div class="class">
                   <a href="{{site.baseurl}}/pages/exetastiki/winter/2015-2016/exetastiki_{{ year.alias }}">{{ year.year }}</a>
@@ -38,10 +38,14 @@
            </div>
         
         <div class="menu-group">
-                 <div class="menu-item" >
-                    <a  href="{{site.baseurl}}/pages/epilegomena/epilegomena-allsemester">Επιλεγόμενα ανά εξάμηνο</a>
-                 </div>
-              </div>
+           <div class="menu-item" >
+              <a  href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-allsemester">Επιλεγόμενα ανά εξάμηνο</a>
+           </div>
+           <div class="menu-item" >
+              <a  href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-teacher">Επιλεγόμενα ανά υπεύθυνο</a>
+           </div>
+        </div>
+        
      </div>
    </div>
 </header>

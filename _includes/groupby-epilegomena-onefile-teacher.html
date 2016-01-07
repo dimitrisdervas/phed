@@ -1,9 +1,9 @@
 <div id="allsemester" class="groupby">
-   {% assign courses_data_unsorted = site.data.epilegomena_allsemesters | sort: "team_for_order" %}
-   {% assign courses_data = courses_data_unsorted | group_by: "team" %}
-   <div class="category-links">
+   {% assign courses_data_unsorted = site.data.epilegomena_allsemesters | sort: "rensponsible" %}
+   {% assign courses_data = courses_data_unsorted | group_by: "rensponsible" %}
+   <div class="category-links--teacher">
          {% for course in courses_data %}    
-                  <a href="#{{ course.name | slugify }}">Ομάδα {{ course.name }}</a>
+                  <a href="#{{ course.name | slugify }}">{{ course.name }}</a>
           {% endfor%}
    </div>
 <!--  for listjs   copied from http://codepen.io/jamesbarnett/pen/kcwzq -->
@@ -11,13 +11,14 @@
    {% for course in courses_data %}
     
       <li>  
-         <div id="{{ course.name | slugify }}" class="category-title">Ομάδα {{ course.name }}<span class="to-top"><a href="#page-title">back to top</a></span></div>
+         <div id="{{ course.name | slugify }}" class="category-title">{{ course.name }}<span class="to-top"><a href="#page-title">back to top</a></span></div>
          
          <div class="category">
 
 
-                  {% assign course-items-sorted-day = course.items | sort: "day_for_order" %}
-              
+
+              {% assign course-items-sorted-day = course.items | sort: "day_for_order" %}
+            
                   {% for cat in course-items-sorted-day %}
                       <div class="groupby-items">
                          <div class="groupby-details">
@@ -27,23 +28,22 @@
                             {% else %}
                                <div class="groupby-title">{{ cat.course }}</div>
                             {% endif %}
-                               
+                            
+                            <div class="categories-place">Ομάδα: {{ cat.team }}</div>   
+                            
                             <div class="categories-place">{{ cat.classroom }}</div>
                             
-                            <div class="groupby-teacher">
-                              {% if {{cat.teacher}} %}
+                           {% if {{cat.teacher}} %}
                                <div class="categories-place">Διδάσκων: {{ cat.teacher }}</div>
                               {% endif %}
-                               <div class="categories-place">Υπεύθυνος: {{ cat.rensponsible }}</div>                                  
-                            </div>
                             
                            </div>
                          
-                    
+                           
                             
-                             {% include season-template.html %}
+                        {% include season-template.html %}
                             
-           
+                 
 
                       </div> 
                   {% endfor %}
