@@ -67,17 +67,35 @@ section {
    font-size: 24px;
 }
 /* FRONTPAGE */
-.fronpage {
+.frontpage {
     display: flex;
-    /* margin: 0 20px; */
-   .year-item {
-       display: flex;
-       flex-direction: column;
-       margin: 0 20px;
-       background: #fff;
-       padding: 10px;
+    flex-direction: column;
+
+   .block-item {
+    display: flex;
+    margin: 20px 0;
+    background: #fff;
+    padding: 10px;
+    justify-content: space-around;
+    align-items: center;
+      a {
+         padding: 20px;
+         line-height: 3;
+         color: #333;
+         font-weight: bold;
+         font-size: 18px;
+      }
+      a:hover {
+         color: #8E219A;
+      }
    }
-   .year {
+   .class a:hover {
+      background: #D4D4D4;
+   }
+   .details a:hover {
+      background: #D4D4D4;
+   }
+   .block-title {
        font-size: 20px;
        font-weight: bold;
        line-height: 2;

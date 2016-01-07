@@ -1,51 +1,63 @@
 ---
 layout: default
 pagename: frontpage
-year: "2015-2016"
+block: "2015-2016"
 season: winter
 ---
 
+<div class="frontpage">
+ <h1>ΤΕΦΑΑ - 2015-2016</h1>
+<h2>Εξεταστική</h2> 
+  <div class="block--exetastiki">
+     
+     {% for year in site.data.phed-data.aliases %}
+      <div class="block-item">
+         <div class="block-title">{{ year.year }}</div>
+         {% for class in (1..10) %}
+            <div class="class">
+               <a href="{{site.baseurl}}/pages/exetastiki/{{page.season}}/{{page.block}}/exetastiki_{{ year.alias }}#{{ year.class }}{{ class }}"> {{ year.class }}{{ class }}</a>
+              </div>
+            {% endfor %}
+           </div>
+         {% endfor %}
+     
+      </div>
 
-<h1>Εξεταστική</h1>
-<div class="fronpage">
- 
-  {% for year in site.data.phed-data.aliases %}
-   <div class="year-item">
-   <div class="year">{{ year.year }}</div>
-   {% for class in (1..10) %}
-      <div class="class">
-         <a href="{{site.baseurl}}/pages/exetastiki/{{page.season}}/{{page.year}}/exetastiki_{{ year.alias }}#{{ year.class }}{{ class }}"> {{ year.class }}{{ class }}</a>
-        </div>
-      {% endfor %}
-     </div>
-   {% endfor %}
-</div>
+<h2>Επιλεγόμενα</h2>
+  <div class="block--exetastiki">
 
-        <div class="menu-group">
-          <div class="menu-title">Επιλεγόμενα ανά ομάδα:</div>
-           <div class="menu-item" >
+      <div class="block-item">
+         <div class="block-title">ανά ομάδα</div>
+
+             <div class="menu-item seasonwinter" >
               <a  href="{{site.baseurl}}/pages/epilegomena/winter/2015-2016/epilegomena-winter-team">(χειμερινό εξάμηνο)</a>
            </div>
-            <div class="menu-item" >
+            <div class="menu-item seasonspring" >
               <a  href="{{site.baseurl}}/pages/epilegomena/spring/2015-2016/epilegomena-spring-team">(εαρινό εξάμηνο)</a>
            </div>
-        </div>
-        
-           <div class="menu-group">
-          <div class="menu-title">Επιλεγόμενα ανά ημέρα:</div>
-           <div class="menu-item" >
+
+           </div>
+ 
+      <div class="block-item">
+         <div class="block-title">ανά ημέρα</div>
+
+             <div class="menu-item seasonwinter" >
               <a  href="{{site.baseurl}}/pages/epilegomena/winter/2015-2016/epilegomena-winter-day">(χειμερινό εξάμηνο)</a>
            </div>
-              <div class="menu-item" >
+              <div class="menu-item seasonspring" >
               <a  href="{{site.baseurl}}/pages/epilegomena/spring/2015-2016/epilegomena-spring-day">(εαρινό εξάμηνο)</a>
-           </div>              
+           </div>   
+
            </div>
-        
-        <div class="menu-group">
+     
+     <div class="block-item details">
            <div class="menu-item" >
-              <a  href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-allsemester">Επιλεγόμενα ανά εξάμηνο</a>
+              <a  href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-allsemester">Συγκεντρωτικά ανά ομάδα</a>
            </div>
            <div class="menu-item" >
-              <a  href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-teacher">Επιλεγόμενα ανά υπεύθυνο</a>
+              <a  href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-teacher">Συγκεντρωτικά ανά υπεύθυνο</a>
            </div>
-        </div>
+        </div>  
+     
+      </div>
+
