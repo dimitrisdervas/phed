@@ -11,7 +11,11 @@
    {% for course in courses_data %}
     
       <li>  
-         <div id="{{ course.name | slugify }}" class="category-title">{{ course.name }}<span class="to-top"><a href="#page-title">back to top</a></span></div>
+         <div id="{{ course.name | slugify }}" class="category-title">
+            {{ course.name }}
+
+            <span class="to-top"><a href="#page-title">back to top</a></span>
+         </div>
          
          <div class="category">
 

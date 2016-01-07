@@ -17,13 +17,18 @@
    {% for course in courses_data %}
     
       <li>  
-         <div id="{{ course.name | slugify }}" class="category-title">{{ course.name }}<span class="to-top"><a href="#page-title">back to top</a></span></div>
+         <div id="{{ course.name | slugify }}" class="category-title">
+            {{ course.name }}
+            
+            {% include season-template-current.html %}
+            
+            <span class="to-top"><a href="#page-title">back to top</a></span></div>
          
          <div class="category">
-<!--             TIME -->
-         {% assign courses_team = course.items | group_by: include.time %}
-         {% assign courses_team_data = courses_team | sort: "name" %}
-         {% for subcategory_onedeep in courses_team_data %}  
+   <!--             TIME -->
+            {% assign courses_team = course.items | group_by: include.time %}
+            {% assign courses_team_data = courses_team | sort: "name" %}
+            {% for subcategory_onedeep in courses_team_data %}  
             
              
          <div class="subcategory-item">

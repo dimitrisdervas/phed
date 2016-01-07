@@ -1,0 +1,30 @@
+ <div class="seasons"> 
+    {% case include.season %}
+          {% when "winter" %}
+    
+              {% if {{cat.spring}} %}
+                <div class="season--item">
+                   <div class="season{{ cat.spring }} item">
+                      <a href="{{site.baseurl}}/pages/epilegomena/spring/{{page.year}}/epilegomena-spring-team/#{{ cat.team | slugify }}">{{ cat.spring }} - {{ cat.team }}</a>
+                   </div> 
+                   <div class="categories-day">{{ cat.day }}: {{ cat.time_spring_16 }}</div>
+                </div>
+             {% endif %}
+
+          {% when "spring" %}
+                        
+             {% if {{cat.winter}} %}
+                <div class="season--item">
+                   <div class="season{{ cat.winter }} item">
+                      <a href="{{site.baseurl}}/pages/epilegomena/winter/{{page.year}}/epilegomena-winter-team/#{{ cat.team | slugify }}">{{ cat.winter }} - {{ cat.team }}</a>
+                   </div> 
+                   <div class="categories-day">{{ cat.day }}:  {{ cat.time_winter_15 }}</div>
+                </div>
+             {% endif %}
+            
+     {% endcase %}
+                        
+    
+
+
+</div>

@@ -18,13 +18,22 @@
     
       <li>  
          <div id="{{ course.name | slugify }}" class="category-title">
-            <div class="team--number">Ομάδα {{ course.name }} <div class="to-top"><a href="#page-title">back to top</a></div> </div> 
-
+            <div class="team--number">
+               
+               Ομάδα {{ course.name }} 
+               
+               {% include season-template-current.html %}
+            
+               <div class="to-top"><a href="#page-title">back to top</a></div> 
+            </div> 
+            
+            
+            
             {% for team in site.data.phed-data.epilegomena2013 %}
                {% assign team-slug = course.name | slugify %}
                      {% if team.team == team-slug %}
-                   <div class="team--title">{{ team.title }}</div>
-                   <div class="team--description">{{ team.text }}</div>
+                         <div class="team--title">{{ team.title }}</div>
+                         <div class="team--description">{{ team.text }}</div>
                      {% endif%}
                {% endfor%}
 

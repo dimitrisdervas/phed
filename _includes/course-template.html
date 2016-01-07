@@ -2,18 +2,23 @@
                       <div class="groupby-items">
                          <div class="groupby-text">
                             {% if {{cat.url}} != nill %}
-                               <div class="groupby-title"><a href="{{cat.url}}" title="e-tefaa" class="tooltip">{{ cat.course }}</a></div>
+                               <div class="groupby-title"><a href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-allsemester/#{{ cat.id-winter}}">{{ cat.course }}</a></div>
                             {% else %}
                                <div class="groupby-title">{{ cat.course }}</div>
                             {% endif %}
                          </div>
                          
                          <div class="groupby-categories">
-                               <div class="categories-place">{{ cat.place }}</div>
+                               <div class="categories-place" title="περιοχή" class="tooltip">{{ cat.place }}</div>
                                
                            <div class="seasons">
-                               <div class="season{{ cat.winter }} item">{{ cat.winter }}</div> 
-                               <div class="season{{ cat.spring }} item">{{ cat.spring }}</div> 
+                                  {% case include.season %}
+                                     {% when "winter" %}
+                                          <div class="season{{ cat.spring }} item" title="διαθέσιμο" class="tooltip" >{{ cat.spring }}</div> 
+                                    {% when "spring" %}
+                                        <div class="season{{ cat.winter }} item" title="διαθέσιμο" class="tooltip">{{ cat.winter }}</div> 
+                                 {% endcase %}
+                               
                             </div>
 
                          </div>

@@ -33,6 +33,9 @@ a {
    text-decoration: none;
    color: $link-color;
 }
+a:hover {
+       color: #8E219A;
+}
 img {
    width: 100%;
 }
@@ -118,6 +121,14 @@ section {
     color: #fff;
     padding: 15px;
 }
+.team-season {
+    display: inline;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 3px;
+   color: #6b6b6b;
+}
+
 .team--title {
     font-size: 20px;
 }
@@ -180,8 +191,8 @@ font-size: 26px;
 .groupby-title {
     font-size: 18px;
     font-weight: bold;
-    color: #8E219A;
-       margin-bottom: 8px;
+    color: #333;
+    margin-bottom: 8px;
 }
 /* http://www.webdesignerdepot.com/2012/11/how-to-create-a-simple-css3-tooltip/ */
 .tooltip{
@@ -248,12 +259,14 @@ font-size: 26px;
    }
    .groupby-text {
    }
-   
+   .courses-number {
+    display: inline;
+    font-size: 16px;
+}
    .groupby-categories {
      font-size: 14px;
    }
    .categories-place {
-
     color: #6B6B6B;
    }
    .seasons {

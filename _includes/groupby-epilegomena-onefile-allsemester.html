@@ -11,23 +11,45 @@
    {% for course in courses_data %}
     
       <li>  
-         <div id="{{ course.name | slugify }}" class="category-title">Ομάδα {{ course.name }}<span class="to-top"><a href="#page-title">back to top</a></span></div>
+         <div id="{{ course.name | slugify }}" class="category-title">
+            Ομάδα {{ course.name }}
+            {% for cat in course.items %}
+               {% assign courses-number = forloop.length  %}
+            {% endfor%}
+              <div class="courses-number">({{ courses-number }} μαθήματα)</div>
+            
+            <span class="to-top"><a href="#page-title">back to top</a></span>
+            
+            {% for team in site.data.phed-data.epilegomena2013 %}
+               {% assign team-slug = course.name | slugify %}
+               {% if team.team == team-slug %}
+                  <div class="team--title">{{ team.title }}</div>
+                  <div class="team--description">{{ team.text }}</div>
+               {% endif%}
+            {% endfor%}
+         </div>
          
          <div class="category">
 
 
-                  {% assign course-items-sorted-day = course.items | sort: "day_for_order" %}
-              
-                  {% for cat in course-items-sorted-day %}
+                  {% assign course-items-sorted = course.items | sort: "course" %}
+            
+            
+
+            
+                  {% for cat in course-items-sorted %}
                       <div class="groupby-items">
                          <div class="groupby-details">
- 
+                            
+                            
+                      <div id="{{ cat.id-winter}}" class="groupby-title">
                             {% if {{cat.url}} != nill %}
-                               <div class="groupby-title"><a href="{{cat.url}}" title="e-tefaa" class="tooltip">{{ cat.course }}</a></div>
+                               <a href="{{cat.url}}" title="e-tefaa" class="tooltip"> {{forloop.index}}. {{ cat.course }}</a>
                             {% else %}
-                               <div class="groupby-title">{{ cat.course }}</div>
+                               {{forloop.index}}. {{ cat.course }}
                             {% endif %}
-                               
+                        </div>
+                            
                             <div class="categories-place">{{ cat.classroom }}</div>
                             
                             <div class="groupby-teacher">

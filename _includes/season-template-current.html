@@ -1,0 +1,8 @@
+{% case include.season %}
+      {% when "winter" %}
+         <div class="season{{ include.season }} team-season">
+      {% when "spring" %}
+         <div class="season{{ include.season }} team-season">
+      {% endcase %}
+   {{ include.season }}
+   </div> 
