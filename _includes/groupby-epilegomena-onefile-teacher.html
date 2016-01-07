@@ -21,9 +21,9 @@
 
 
 
-              {% assign course-items-sorted-day = course.items | sort: "day_for_order" %}
+              {% assign course-items-sorted = course.items | sort: "day_for_order" %}
             
-                  {% for cat in course-items-sorted-day %}
+                  {% for cat in course-items-sorted %}
                       <div class="groupby-items">
                          <div class="groupby-details">
  
@@ -33,7 +33,13 @@
                                <div class="groupby-title">{{ cat.course }}</div>
                             {% endif %}
                             
-                            <div class="categories-place">Ομάδα: {{ cat.team }}</div>   
+                             <div class="categories-etefaa">
+                               {% if {{cat.url}} != nill %}
+                                  <a href="{{cat.url}}" >e-tefaa</a>
+                               {% endif %}                            
+                            </div>
+                            
+                            <div class="categories-place"><a href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-allsemester/#{{ cat.team | slugify }}">Ομάδα: {{ cat.team }}</a></div>   
                             
                             <div class="categories-place">{{ cat.classroom }}</div>
                             

@@ -38,7 +38,8 @@
 
             
                   {% for cat in course-items-sorted %}
-                      <div class="groupby-items">
+            
+                          <div class="groupby-items">
                          <div class="groupby-details">
                             
                             
@@ -50,13 +51,21 @@
                             {% endif %}
                         </div>
                             
+                            <div class="categories-etefaa">
+                               {% if {{cat.url}} != nill %}
+                                  <a href="{{cat.url}}" >e-tefaa</a>
+                               {% endif %}                            
+                            </div>
+                            
                             <div class="categories-place">{{ cat.classroom }}</div>
                             
                             <div class="groupby-teacher">
                               {% if {{cat.teacher}} %}
                                <div class="categories-place">Διδάσκων: {{ cat.teacher }}</div>
                               {% endif %}
-                               <div class="categories-place">Υπεύθυνος: {{ cat.rensponsible }}</div>                                  
+                               <div class="categories-place">Υπεύθυνος: 
+                                  <a href="{{site.baseurl}}/pages/epilegomena/epilegomena-onefile-teacher/#{{ cat.rensponsible | slugify }}">{{ cat.rensponsible }}</a>
+                               </div>                                  
                             </div>
                             
                            </div>
@@ -68,6 +77,7 @@
            
 
                       </div> 
+            
                   {% endfor %}
                
 
