@@ -1,7 +1,6 @@
 # Site settings
 title: Phed Courses
-description: > # this means to ignore newlines until "baseurl:"
-Δες το πρόγραμμα της εξεταστικής σου και όχι μόνο
+description: "Δες το πρόγραμμα της εξεταστικής σου και όχι μόνο"
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "thestudens.xyz"
 
