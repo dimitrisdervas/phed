@@ -29,9 +29,9 @@ js-scripts:
                container: '#hits-container',
                templates: {
                   empty: 'No results',
-                  item: '<div class="groupby-items"><div class="groupby-details"> <div id="{{#winter}}{{id-winter}}{{/winter}}{{^winter}}{{ id-spring}}{{/winter}}" class="groupby-title"> {{#id-winter}} <a href="/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-winter}}">{{{_highlightResult.course.value}}}</a> {{/id-winter}} {{^id-winter}} <a href="/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-spring}}">{{{_highlightResult.course.value}}}</a> {{/id-winter}}</div></div>'
+                  item: '<div class="groupby-items"><div class="groupby-title">{{{_highlightResult.course.value}}}</div> <div class="categories-etefaa"><a href="{{url}}" >e-tefaa</a></div></div>'
                },
-               hitsPerPage: 6
+               hitsPerPage: 15
             })
          );
      
@@ -43,14 +43,26 @@ js-scripts:
          
          search.addWidget(
             instantsearch.widgets.menu({
-               container: '#team',
-               attributeName: 'team',
-               limit: 10,
+               container: '#odigos2013',
+               attributeName: 'year-odigos2013',
+               limit: 15,
+               sortBy: ['name:asc'],
                templates: {
-                  item: '<a>ομάδα {{name}}({{count}})</a>',
-                  cssClasses: {
-                     list: 'category-links'
-                  }
+                  header: 'Οδηγός 2013-2014',
+                  item: '<a>έτος {{name}}</a>'
+               }
+            })
+         );
+         
+         search.addWidget(
+            instantsearch.widgets.menu({
+               container: '#odigos2015',
+               attributeName: 'year-odigos2015',
+               limit: 15,
+               sortBy: ['name:asc'],               
+               templates: {
+                  header: 'Οδηγός 2015-2016',
+                  item: '<a>έτος {{name}}</a>'
                }
             })
          );
@@ -90,13 +102,11 @@ template for course:
 -->
 <!-- https://community.algolia.com/instantsearch.js/documentation/#hits -->
 <div class="main">
-  <div id="team"></div>
-   <input type="text" id="search-box" />
+   <input type="text" id="search-box"/>
    <div id="hits-container"></div>   
    <div id="pagination-container"></div>
 </div>
 <div class="facets">
-
-   <div id="place"></div>
-   <div id="day"></div>
+  <div id="odigos2013" class="facet"></div>
+  <div id="odigos2015" class="facet"></div>
 </div>

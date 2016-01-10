@@ -336,6 +336,17 @@ font-size: 26px;
          @extend .category-links;
       }
    }
+   .facet {
+      margin-bottom: 20px;
+      a {
+         background: #fff;
+         padding: 5px 15px;
+         line-height: 2;
+      }
+      a:hover {
+         background: #ccc;
+      }
+   }
 #pagination-container {
    ul li {
       list-style: none;

@@ -29,7 +29,7 @@ js-scripts:
                container: '#hits-container',
                templates: {
                   empty: 'No results',
-                  item: '<div class="groupby-items"> <div class="groupby-details"> <div id="{{#winter}}{{id-winter}}{{/winter}}{{^winter}}{{ id-spring}}{{/winter}}" class="groupby-title"> {{#id-winter}} <a href="/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-winter}}">{{{_highlightResult.course.value}}}</a> {{/id-winter}} {{^id-winter}} <a href="/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-spring}}">{{{_highlightResult.course.value}}}</a> {{/id-winter}} </div> </div>'
+                  item: '<div class="groupby-items"> <div class="groupby-details"> <div id="{{#winter}}{{id-winter}}{{/winter}}{{^winter}}{{ id-spring}}{{/winter}}" class="groupby-title"> {{#id-winter}} <a href="/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-winter}}"> {{{_highlightResult.course.value}}}</a> {{/id-winter}} {{^id-winter}} <a href="/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-spring}}"> {{{_highlightResult.course.value}}}</a> {{/id-winter}} </div> </div> </div>'
                },
                hitsPerPage: 6
             })
