@@ -1,0 +1,102 @@
+---
+layout: default
+pagename: search
+css-script: |
+ - script: |
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+js-scripts: 
+ - script: 
+       <script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+        <script src="//cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
+ - script: |
+ - script: |
+      <script>
+         var search = instantsearch({
+            appId: '3KQ06K58YX',
+            apiKey: 'e728c9c463e0490e3fa4fa1df75878f6',
+            indexName: 'phed-epilegomena'
+         });
+
+         search.addWidget(
+            instantsearch.widgets.searchBox({
+               container: '#search-box',
+               placeholder: 'Αναζήτηση μαθημάτων'
+            })
+         );
+
+         search.addWidget(
+            instantsearch.widgets.hits({
+               container: '#hits-container',
+               templates: {
+                  empty: 'No results',
+                  item: '<div class="groupby-items"> <div class="groupby-details"> <div id="{{#winter}}{{id-winter}}{{/winter}}{{^winter}}{{ id-spring}}{{/winter}}" class="groupby-title"> {{#id-winter}} <a href="/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-winter}}">{{{_highlightResult.course.value}}}</a> {{/id-winter}} {{^id-winter}} <a href="/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-spring}}">{{{_highlightResult.course.value}}}</a> {{/id-winter}} </div> </div>'
+               },
+               hitsPerPage: 6
+            })
+         );
+     
+         search.addWidget(
+            instantsearch.widgets.pagination({
+               container: '#pagination-container'
+            })
+         );         
+         
+         search.addWidget(
+            instantsearch.widgets.menu({
+               container: '#team',
+               attributeName: 'team',
+               limit: 10,
+               templates: {
+                  item: '<a>ομάδα {{name}}({{count}})</a>',
+                  cssClasses: {
+                     list: 'category-links'
+                  }
+               }
+            })
+         );
+
+         search.start();
+      </script>
+
+---
+<!--  
+            search.addWidget(
+              instantsearch.widgets.refinementList({
+                container: '#place',
+                attributeName: 'place',
+                operator: 'or',
+                limit: 10,
+                templates: {
+                  header: 'Περιοχή'
+                }
+              })
+            );
+         search.addWidget(
+            instantsearch.widgets.refinementList({
+               container: '#day',
+               attributeName: 'day',
+               operator: 'or',
+               limit: 10,
+               sortBy: ['name:asc'],
+               templates: {
+                  header: 'Ημέρα',
+                  item: '<h3>{{name}}: {{count}}</h3>'
+               }
+            })
+         );
+
+template for course:
+<div class="groupby-items"> <div class="groupby-details"> <div id="{{#winter}}{{id-winter}}{{/winter}}{{^winter}}{{ id-spring}}{{/winter}}" class="groupby-title"> {{#id-winter}} <a href="/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-winter}}">{{{_highlightResult.course.value}}}</a> {{/id-winter}} {{^id-winter}} <a href="/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-spring}}">{{{_highlightResult.course.value}}}</a> {{/id-winter}} <div class="categories-etefaa"> {{#url}} <a href="{{url}}" >e-tefaa</a> {{/url}} </div> <div class="groupby-teacher"> {{#teacher}} <div class="categories-place">Διδάσκων: {{ teacher }}</div> {{/teacher}} <div class="categories-place">Υπεύθυνος: <a href="/pages/epilegomena/epilegomena-onefile-teacher/#{{ rensponsible }}">{{ rensponsible }}</a> </div> </div> </div> <div class="seasons"> {{#winter}} <div class="season--item"> <div class="season{{ winter }} item"> <a href="/pages/epilegomena/winter/{{page.year}}/epilegomena-winter-team/#{{ team  }}">{{ winter }} - team:{{ team }}</a> </div> <div class="categories-day"><a href="{{site.baseurl}}/pages/epilegomena/winter/2015-2016/epilegomena-winter-day//#{{ day  }}">{{ day }}:</a>  {{ time_winter_15 }}</div> </div> {{/winter}} {{#spring}} <div class="season--item"> <div class="season{{ spring }} item"> <a href="/pages/epilegomena/spring/2015-2016/epilegomena-spring-team/#{{ team  }}">{{ spring }} - team:{{team }}</a> </div> <div class="categories-day"><a href="{{site.baseurl}}/pages/epilegomena/spring/{{page.year}}/epilegomena-spring-day//#{{ day  }}">{{ day }}:</a> {{time_spring_16 }}</div> </div> {{/spring}} </div> </div> </div>
+-->
+<!-- https://community.algolia.com/instantsearch.js/documentation/#hits -->
+<div class="main">
+  <div id="team"></div>
+   <input type="text" id="search-box" />
+   <div id="hits-container"></div>   
+   <div id="pagination-container"></div>
+</div>
+<div class="facets">
+
+   <div id="place"></div>
+   <div id="day"></div>
+</div>

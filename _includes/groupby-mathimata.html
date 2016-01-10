@@ -1,0 +1,19 @@
+<div id="courses" class="groupby">
+   
+
+    
+   {% assign course-data = site.data.phed-courses | group_by: "odigos2013" %}
+   {% for year in course-data %}
+ <div>      {{year.name}}</div><div>Οδηγός 2013</div><div>Οδηγός 2015</div>
+    
+
+         
+         {% for course in year.items %}
+      <div>  {{ course.course}} / <a href="{{ course.url}}">e-tefaa</a> / {{ course.odigos2013}} / {{ course.odigos2015}}</div> 
+           {% endfor %}
+            
+
+
+    {% endfor %} 
+
+</div>

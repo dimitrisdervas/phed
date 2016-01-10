@@ -1,0 +1,41 @@
+---
+layout: default
+pagename: search
+block: "2015-2016"
+season: winter
+js-scripts:
+ - script: | 
+      "<script type="text/javascript" src="{{ site.baseurl }}/assets/js/js-all.js"></script>"
+ - script: | 
+      "<script type="text/javascript" src="{{ site.baseurl }}/assets/js/js-all.js"></script>"
+ - script: |
+    <script>
+            // builds search
+         $(document).ready(function() {
+           $('input#search').on('keyup', function () {
+             var resultdiv = $('#results');
+             // Get query
+             var query = $(this).val();
+             // Search for it
+             var result = index.search(query);
+             // Show results
+             resultdiv.empty();
+             // Add status
+             resultdiv.prepend('<p class="">Found '+result.length+' result(s)</p>');
+             // Loop through, match, and add results
+             for (var item in result) {
+               var ref = result[item].ref;
+               var searchitem = '<div class="result"><div class="result-body"><a href="'+store[ref].url+'" class="post-title">'+store[ref].course+'</a><div class="post-date small">'+store[ref].teamDescription+'</div><div class="seasonwinter season">'+store[ref].winter+'</div><div class="seasonspring season">'+store[ref].spring+'</div></div>';
+               resultdiv.append(searchitem);
+             }
+           });
+         });
+     </script>
+---
+
+<div class="container">
+   <div class="content" id="content">
+      <input placeholder="Search…" type="search" id="search" class="search-input">
+      <div id="results" class="all-posts results"></div>
+   </div>
+</div>

@@ -8,7 +8,7 @@
   <body>
      <div class="page">
 
-           {% include header.html %}
+        {% include header.html %}
 
         
         <div data-sticky-wrap class="content">
@@ -17,15 +17,17 @@
         
         {% include footer.html %}
      </div>
+     
      <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        {% case page %}
-         {% when 'frontpage' %}
-            <script type="text/javascript" src="{{ site.baseurl }}/assets/js/js-frontpage.js"></script>
-         {% when 'categories' %}
-             <script type="text/javascript" src="{{ site.baseurl }}/assets/js/js-categories.js"></script>
-         {% else %}
-             <script type="text/javascript" src="{{ site.baseurl }}/assets/js/js-page.js"></script>
-         {% endcase %}
-     <script> stickyFooter.init(); </script>
+     
+     {% for script in page.js-scripts %}
+        {{ script.script }}
+     {% endfor %}
+     
+
+
+        
+     
+    
   </body>
 </html>

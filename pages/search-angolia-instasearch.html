@@ -1,0 +1,141 @@
+---
+layout: default
+pagename: search
+css-script: |
+ - script: |
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.ion.rangeslider/2.0.12/css/ion.rangeSlider.css">
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.ion.rangeslider/2.0.12/css/ion.rangeSlider.skinFlat.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/algolia.css">
+js-scripts: 
+ - script: 
+      <script src="//cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+      <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+      <script src="//cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+      <script src="//cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
+      <script src="//cdn.jsdelivr.net/jquery.ion.rangeslider/2.0.12/js/ion.rangeSlider.min.js"></script>
+ - script: |
+      <script>
+               // INITIALIZATION
+               // ==============
+
+               // Replace with your own values
+               var APPLICATION_ID = '3KQ06K58YX';
+               var SEARCH_ONLY_API_KEY = 'e728c9c463e0490e3fa4fa1df75878f6';
+               var INDEX_NAME = 'phed-courses';
+               var PARAMS = {
+                  hitsPerPage: 10,
+                  maxValuesPerFacet: 8,
+                  facets: ['type'],
+                  disjunctiveFacets: ['categories', 'brand', 'price']
+               };
+
+               // Client + Helper initialization
+               var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
+               var algoliaHelper = algoliasearchHelper(algolia, INDEX_NAME, PARAMS);
+
+               // DOM BINDING
+               $searchInput = $('#search-input');
+               $searchInputIcon = $('#search-input-icon');
+               $main = $('main');
+               $sortBySelect = $('#sort-by-select');
+               $hits = $('#hits');
+               $stats = $('#stats');
+               $facets = $('#facets');
+               $pagination = $('#pagination');
+
+               // Hogan templates binding
+               var hitTemplate = Hogan.compile($('#hit-template').text());
+               var statsTemplate = Hogan.compile($('#stats-template').text());
+               var facetTemplate = Hogan.compile($('#facet-template').text());
+               var sliderTemplate = Hogan.compile($('#slider-template').text());
+               var paginationTemplate = Hogan.compile($('#pagination-template').text());
+               var noResultsTemplate = Hogan.compile($('#no-results-template').text());
+         
+                  // Input binding
+                  $searchInput
+                  .on('keyup', function() {
+                    var query = $(this).val();
+                    toggleIconEmptyInput(query);
+                    algoliaHelper.setQuery(query).search();
+                  })
+                  .focus();
+
+                  $searchInputIcon.on('click', function(e) {
+                    e.preventDefault();
+                    $searchInput.val('').keyup().focus();
+                  });
+
+                  function toggleIconEmptyInput(query) {
+                    $searchInputIcon.toggleClass('empty', query.trim() !== '');
+                  }
+         
+                  // Search results
+                  algoliaHelper.on('result', function(content, state) {
+                    // CONSOLE LOG TO DEBUG
+                    console.log(content);
+                    renderStats(content);
+                    renderHits(content);
+                  });
+         
+                  // RENDER HITS TEMPLATE
+                  function renderHits(content) {
+                     $hits.html(hitTemplate.render(content));
+                  }
+         
+                  function renderStats(content) {
+                    var stats = {
+                      nbHits: content.nbHits,
+                      nbHits_plural: content.nbHits !== 1,
+                      processingTimeMS: content.processingTimeMS
+                    };
+                    $stats.html(statsTemplate.render(stats));
+                  }
+      </script>
+
+---
+
+
+
+<input id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Search by name, brand, description..."/>
+<div id="search-input-icon"></div>
+
+
+
+
+
+
+ <main>
+  <!-- Left Column -->
+  <div id="left-column">
+    <div id="facets"></div>
+  </div>
+
+  <!-- Right Column -->
+  <div id="right-column">
+    <div id="sort-by">Sort by:
+      <select dir="rtl" id="sort-by-select">
+        <option value="" selected>Most relevant</option>
+        <option value="_price_asc">Lowest Price</option>
+        <option value="_price_desc">Highest Price</option>
+      </select>
+      <span class="caret"></span>
+    </div>
+    <div id="stats"></div>
+    <div id="hits"></div>
+    <div id="pagination"></div>
+  </div>
+</main>
+
+   <!-- Hit template -->
+   <script type="text/template" id="hit-template">
+     {{#hits}}
+        <div class="hit">
+          <div class="hit-content">
+            <h3 class="hit-price">${{ course }}</h3>
+            <h2 class="hit-name">{{{ _highlightResult.course.value }}}</h2>
+            <p class="hit-description">{{{ _highlightResult.team-description.value }}}</p>
+          </div>
+        </div>
+     {{/hits}}
+   </script>
+

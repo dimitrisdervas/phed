@@ -314,3 +314,39 @@ font-size: 26px;
    .season {
       background: transparent;
    }
+/* ALGOLIA */
+
+   .main {
+      @include span( 8 of 12);
+   }
+   .facets {
+      @include span(4 of 12 last);
+   }
+   .ais-search-box input {
+      width: 100%;
+      line-height: 2;
+      font-size: 18px;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      margin-bottom: 10px;
+   }
+   #team {
+      margin-bottom: 20px;
+      .ais-menu--list {
+         @extend .category-links;
+      }
+   }
+#pagination-container {
+   ul li {
+      list-style: none;
+      display: inline;
+      a {
+         padding: 5px 8px;
+         border: 1px solid #EAE7E7;
+         margin: 0 2px;
+      }
+      a:hover {
+         background: #fff;
+      }
+   }
+}
