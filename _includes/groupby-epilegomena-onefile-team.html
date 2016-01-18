@@ -30,7 +30,7 @@
             
             
             {% for team in site.data.phed-data.epilegomena2013 %}
-               {% assign team-slug = course.name %}
+               {% assign team-slug = course.name | slugify %}
                      {% if team.team == team-slug %}
                          <div class="team--title">{{ team.title }}</div>
                          <div class="team--description">{{ team.text }}</div>
@@ -50,7 +50,8 @@
          <div class="subcategory-item">
             <div class="subcategory-title"><a href="{{site.baseurl}}/pages/epilegomena/{{include.season}}/{{page.year}}/epilegomena-{{include.season}}-day/#{{ subcategory_onedeep.name | slugify }}">{{ subcategory_onedeep.name }}</a></div>           
 <!-- TEAM -->
-              {% assign subcategory_twodeep = subcategory_onedeep.items | group_by: include.time %}  
+              {% assign subcategory_twodeep_unsorted = subcategory_onedeep.items | group_by: include.time %}  
+              {% assign subcategory_twodeep = subcategory_twodeep_unsorted | sort: "name" %}
               {% for subcategory_two in subcategory_twodeep %}  
             
             <div class="subcategory-twodeep-item">

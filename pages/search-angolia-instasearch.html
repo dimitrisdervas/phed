@@ -1,141 +1,156 @@
 ---
 layout: default
 pagename: search
-css-script: |
+css-scripts: 
  - script: |
-      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.ion.rangeslider/2.0.12/css/ion.rangeSlider.css">
-      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.ion.rangeslider/2.0.12/css/ion.rangeSlider.skinFlat.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/algolia.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+ - script: |
+      <style>
+         .algolia-autocomplete {
+              width: 100%;
+            }
+            .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+              width: 100%;
+            }
+            .algolia-autocomplete .aa-hint {
+              color: #999;
+            }
+            .algolia-autocomplete .aa-dropdown-menu {
+              width: 100%;
+              background-color: #fff;
+              border: 1px solid #999;
+              border-top: none;
+            }
+            .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+              cursor: pointer;
+              padding: 5px 4px;
+            }
+            .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+              background-color: #B2D7FF;
+            }
+            .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+              font-weight: bold;
+              font-style: normal;
+            }
+      </style>
 js-scripts: 
  - script: 
-      <script src="//cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
       <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-      <script src="//cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
-      <script src="//cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
-      <script src="//cdn.jsdelivr.net/jquery.ion.rangeslider/2.0.12/js/ion.rangeSlider.min.js"></script>
+        <script src="//cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
+      <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+       <script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+
  - script: |
       <script>
-               // INITIALIZATION
-               // ==============
-
-               // Replace with your own values
-               var APPLICATION_ID = '3KQ06K58YX';
-               var SEARCH_ONLY_API_KEY = 'e728c9c463e0490e3fa4fa1df75878f6';
-               var INDEX_NAME = 'phed-courses';
-               var PARAMS = {
-                  hitsPerPage: 10,
-                  maxValuesPerFacet: 8,
-                  facets: ['type'],
-                  disjunctiveFacets: ['categories', 'brand', 'price']
-               };
-
-               // Client + Helper initialization
-               var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
-               var algoliaHelper = algoliasearchHelper(algolia, INDEX_NAME, PARAMS);
-
-               // DOM BINDING
-               $searchInput = $('#search-input');
-               $searchInputIcon = $('#search-input-icon');
-               $main = $('main');
-               $sortBySelect = $('#sort-by-select');
-               $hits = $('#hits');
-               $stats = $('#stats');
-               $facets = $('#facets');
-               $pagination = $('#pagination');
-
-               // Hogan templates binding
-               var hitTemplate = Hogan.compile($('#hit-template').text());
-               var statsTemplate = Hogan.compile($('#stats-template').text());
-               var facetTemplate = Hogan.compile($('#facet-template').text());
-               var sliderTemplate = Hogan.compile($('#slider-template').text());
-               var paginationTemplate = Hogan.compile($('#pagination-template').text());
-               var noResultsTemplate = Hogan.compile($('#no-results-template').text());
+           // Mustache templating by Hogan.js (http://mustache.github.io/)
+        var templateCourse = Hogan.compile('<div class="team">' +
+          '<div class="course">{{{ _highlightResult.course.value }}}</div>' +
+          '<span class="year">{{ year-odigos2013 }} έτος(οδηγός 2013)</span>' +
+        '</div>');
          
-                  // Input binding
-                  $searchInput
-                  .on('keyup', function() {
-                    var query = $(this).val();
-                    toggleIconEmptyInput(query);
-                    algoliaHelper.setQuery(query).search();
-                  })
-                  .focus();
+        var client = algoliasearch('3KQ06K58YX', 'e728c9c463e0490e3fa4fa1df75878f6')
+        var index = client.initIndex('phed-courses');
+         
+        autocomplete('#search-box', { hint: true }, [
+           {
+              source: index.ttAdapter({ hitsPerPage: 5 }),
+              displayKey: 'course',
+              templates: {
+                 suggestion: function(hit) {
+                    return templateCourse.render(hit);
+                 }
+              }
+           }
+        ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+          console.log(suggestion, dataset);
+        });
+      </script>
+ - script: |
+      <script>
+         var search = instantsearch({
+            appId: '3KQ06K58YX',
+            apiKey: 'e728c9c463e0490e3fa4fa1df75878f6',
+            indexName: 'phed-courses'
+         });
+         
+          search.addWidget(
+            instantsearch.widgets.searchBox({
+               container: '#search-box',
+               placeholder: 'Αναζήτηση μαθημάτων'
+            })
+         );
 
-                  $searchInputIcon.on('click', function(e) {
-                    e.preventDefault();
-                    $searchInput.val('').keyup().focus();
-                  });
-
-                  function toggleIconEmptyInput(query) {
-                    $searchInputIcon.toggleClass('empty', query.trim() !== '');
-                  }
+         search.addWidget(
+            instantsearch.widgets.hits({
+               container: '#hits-container',
+               templates: {
+                  empty: 'No results',
+                  item: '<div class="groupby-items"><div class="groupby-title">{{{_highlightResult.course.value}}}</div> <div class="categories-etefaa"><a href="{{url}}" >e-tefaa</a></div><span class="year">{{ year-odigos2015 }} έτος(οδηγός 2015)</span><span class="year">{{ year-odigos2015 }} έτος(οδηγός 2013)</span></div>'
+               },
+               hitsPerPage: 15
+            })
+         );
+     
+         search.addWidget(
+            instantsearch.widgets.pagination({
+               container: '#pagination-container'
+            })
+         );         
          
-                  // Search results
-                  algoliaHelper.on('result', function(content, state) {
-                    // CONSOLE LOG TO DEBUG
-                    console.log(content);
-                    renderStats(content);
-                    renderHits(content);
-                  });
+         search.addWidget(
+            instantsearch.widgets.menu({
+               container: '#odigos2013',
+               attributeName: 'year-odigos2013',
+               limit: 15,
+               sortBy: ['name:asc'],
+               templates: {
+                  header: 'Οδηγός 2013-2014',
+                  item: '<a>έτος {{name}}</a>'
+               }
+            })
+         );
          
-                  // RENDER HITS TEMPLATE
-                  function renderHits(content) {
-                     $hits.html(hitTemplate.render(content));
-                  }
+         search.addWidget(
+            instantsearch.widgets.menu({
+               container: '#odigos2015',
+               attributeName: 'year-odigos2015',
+               limit: 15,
+               sortBy: ['name:asc'],               
+               templates: {
+                  header: 'Οδηγός 2015-2016',
+                  item: '<a>έτος {{name}}</a>'
+               }
+            })
+         );
+         search.addWidget(
+            instantsearch.widgets.clearAll({
+               container: '#clear-all',
+               templates: {
+                  link: 'Reset everything'
+               },
+               autoHideContainer: false
+            })
+         );
          
-                  function renderStats(content) {
-                    var stats = {
-                      nbHits: content.nbHits,
-                      nbHits_plural: content.nbHits !== 1,
-                      processingTimeMS: content.processingTimeMS
-                    };
-                    $stats.html(statsTemplate.render(stats));
-                  }
+         search.addWidget(
+            instantsearch.widgets.stats({
+               container: '#stats-container'
+            })
+         );
+         
+         search.start();
       </script>
 
 ---
-
-
-
-<input id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Search by name, brand, description..."/>
-<div id="search-input-icon"></div>
-
-
-
-
-
-
- <main>
-  <!-- Left Column -->
-  <div id="left-column">
-    <div id="facets"></div>
-  </div>
-
-  <!-- Right Column -->
-  <div id="right-column">
-    <div id="sort-by">Sort by:
-      <select dir="rtl" id="sort-by-select">
-        <option value="" selected>Most relevant</option>
-        <option value="_price_asc">Lowest Price</option>
-        <option value="_price_desc">Highest Price</option>
-      </select>
-      <span class="caret"></span>
-    </div>
-    <div id="stats"></div>
-    <div id="hits"></div>
-    <div id="pagination"></div>
-  </div>
-</main>
-
-   <!-- Hit template -->
-   <script type="text/template" id="hit-template">
-     {{#hits}}
-        <div class="hit">
-          <div class="hit-content">
-            <h3 class="hit-price">${{ course }}</h3>
-            <h2 class="hit-name">{{{ _highlightResult.course.value }}}</h2>
-            <p class="hit-description">{{{ _highlightResult.team-description.value }}}</p>
-          </div>
-        </div>
-     {{/hits}}
-   </script>
-
+<!-- https://community.algolia.com/instantsearch.js/documentation/#hits -->
+<div class="main">
+   <input type="text" id="search-box"/>
+   <div id="stats-container"></div>
+   <div id="hits-container"></div>   
+   <div id="pagination-container"></div>
+</div>
+<div class="facets">
+  <div id="clear-all"></div>
+  <div id="odigos2013" class="facet"></div>
+  <div id="odigos2015" class="facet"></div>
+</div>

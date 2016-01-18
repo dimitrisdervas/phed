@@ -172,6 +172,7 @@ section {
   flex-grow: 1;
    background: #E8E8E8;
     margin: 5px;
+       flex-basis: 25%;
 }
 .subcategory-title {
 font-size: 26px;
@@ -211,6 +212,9 @@ font-size: 26px;
     font-weight: bold;
     color: #333;
     margin-bottom: 8px;
+   em {
+          color: #D62C2C;
+   }
 }
 /* http://www.webdesignerdepot.com/2012/11/how-to-create-a-simple-css3-tooltip/ */
 .tooltip{
@@ -347,6 +351,25 @@ font-size: 26px;
          background: #ccc;
       }
    }
+.epilegomena--teams{
+   .epilegomena--header {
+      font-size:18px;
+      font-weight: bold;
+   }
+   .group-team {
+      margin-bottom: 10px;
+      font-size: 16px;
+      background: #FDFDFD;
+      padding: 8px;
+   }
+   .epilegomena--shortitle {
+      float: left;
+   }
+   .epilegomena--title {
+      font-size: 12px;
+      display: inline;
+   }
+}
 #pagination-container {
    ul li {
       list-style: none;

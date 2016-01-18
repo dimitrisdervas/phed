@@ -40,33 +40,46 @@ js-scripts:
                container: '#pagination-container'
             })
          );         
-         
          search.addWidget(
-            instantsearch.widgets.menu({
+           instantsearch.widgets.refinementList({
                container: '#odigos2013',
                attributeName: 'year-odigos2013',
                limit: 15,
+               operator: 'or',
                sortBy: ['name:asc'],
                templates: {
-                  header: 'Οδηγός 2013-2014',
-                  item: '<a>έτος {{name}}</a>'
+                  header: 'Οδηγός 2013-2014'
                }
+           })
+         );
+         search.addWidget(
+           instantsearch.widgets.refinementList({
+               container: '#odigos2015',
+               attributeName: 'year-odigos2015',
+               limit: 15,
+               operator: 'or',
+               sortBy: ['name:asc'],
+               templates: {
+                  header: 'Οδηγός 2015-2016'
+               }
+           })
+         );
+         search.addWidget(
+            instantsearch.widgets.clearAll({
+               container: '#clear-all',
+               templates: {
+                  link: 'Reset everything'
+               },
+               autoHideContainer: false
             })
          );
          
          search.addWidget(
-            instantsearch.widgets.menu({
-               container: '#odigos2015',
-               attributeName: 'year-odigos2015',
-               limit: 15,
-               sortBy: ['name:asc'],               
-               templates: {
-                  header: 'Οδηγός 2015-2016',
-                  item: '<a>έτος {{name}}</a>'
-               }
+            instantsearch.widgets.stats({
+               container: '#stats-container'
             })
          );
-
+         
          search.start();
       </script>
 
@@ -102,11 +115,14 @@ template for course:
 -->
 <!-- https://community.algolia.com/instantsearch.js/documentation/#hits -->
 <div class="main">
+   <h1>Μαθήματα Κορμού</h1>
    <input type="text" id="search-box"/>
+   <div id="stats-container"></div>
    <div id="hits-container"></div>   
    <div id="pagination-container"></div>
 </div>
 <div class="facets">
+  <div id="clear-all"></div>
   <div id="odigos2013" class="facet"></div>
   <div id="odigos2015" class="facet"></div>
 </div>
