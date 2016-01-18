@@ -21,7 +21,7 @@
             <span class="to-top"><a href="#page-title">back to top</a></span>
             
             {% for team in site.data.phed-data.epilegomena2013 %}
-               {% assign team-slug = course.name %}
+             {% assign team-slug = course.name | slugify %}
                {% if team.team == team-slug %}
                   <div class="team--title">{{ team.title }}</div>
                   <div class="team--description">{{ team.text }}</div>
