@@ -1,16 +1,9 @@
-<div id="allsemester" class="groupby">
-   {% assign courses_data_unsorted = site.data.epilegomena_allsemesters | sort: "team_for_order" %}
-   {% assign courses_data = courses_data_unsorted | group_by: "team" %}
-   <div class="category-links">
-         {% for course in courses_data %}    
-                  <a href="#{{ course.name }}">Ομάδα {{ course.name }}</a>
-          {% endfor%}
-   </div>
+
 <!--  for listjs   copied from http://codepen.io/jamesbarnett/pen/kcwzq -->
- <ul id="courses-ul" >     
+  
    {% for course in courses_data %}
     
-      <li>  
+
          <div id="{{ course.name }}" class="category-title">
             Ομάδα {{ course.name }}
             {% for cat in course.items %}
@@ -18,7 +11,7 @@
             {% endfor%}
               <div class="courses-number">({{ courses-number }} μαθήματα)</div>
             
-            <span class="to-top"><a href="#page-title">back to top</a><a class="print-button">Print</a></span>
+            <span class="to-top"><a href="#page-title">back to top</a></span>
             
             {% for team in site.data.phed-data.epilegomena2013 %}
              {% assign team-slug = course.name | slugify %}
@@ -88,7 +81,5 @@
             
 <!--             SUBCATEGOrY -->
          </div>
-       </li>  
+ {% unless forloop.last %},{% endunless %}
     {% endfor %} 
-  </ul>
-</div>
