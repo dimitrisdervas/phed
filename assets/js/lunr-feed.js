@@ -1,7 +1,6 @@
 ---
 ---
-   
-   
+
 var index = lunr(function () {   
   this.field('course')
   this.field('team')

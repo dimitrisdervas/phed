@@ -1,8 +1,8 @@
 ---
 pagename: epilegomena
-year: "2015-2016"
+year: 2015-2016
 ---
-   
+
 var docDefinition = {
       header: 'simple text',
 

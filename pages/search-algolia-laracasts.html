@@ -2,110 +2,107 @@
 layout: default
 pagename: search
 css-script: |
- - script: |
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
-js-scripts: 
- - script: 
-       <script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
- - script: |
- - script: |
-      <script>
-         /* global instantsearch */
-         app({
-            appId: '3KQ06K58YX',
-            apiKey: 'e728c9c463e0490e3fa4fa1df75878f6',
-            indexName: 'phed-courses'
-         });
+  - script: |
+     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+js-scripts:
+- script: <script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+- script: ''
+- script: |
+    <script>
+       /* global instantsearch */
+       app({
+          appId: '3KQ06K58YX',
+          apiKey: 'e728c9c463e0490e3fa4fa1df75878f6',
+          indexName: 'phed-courses'
+       });
 
-         function app(opts) {
-            var search = instantsearch({
-               appId: opts.appId,
-               apiKey: opts.apiKey,
-               indexName: opts.indexName,
-               urlSync: true
-            });
+       function app(opts) {
+          var search = instantsearch({
+             appId: opts.appId,
+             apiKey: opts.apiKey,
+             indexName: opts.indexName,
+             urlSync: true
+          });
 
-            var widgets = [
-               instantsearch.widgets.searchBox({
-                  container: '#search-input',
-                  placeholder: 'Search for products'
-               }),
-               instantsearch.widgets.hits({
-                  container: '#hits',
-                  hitsPerPage: 10,
-                  templates: {
-                     item: getTemplate('hit'),
-                     empty: getTemplate('no-results')
-                  }
-               }),
-               instantsearch.widgets.stats({
-                  container: '#stats'
-               }),
-               instantsearch.widgets.sortBySelector({
-                  container: '#sort-by',
-                  autoHideContainer: true,
-                  indices: [{
-                     name: opts.indexName, label: 'Most relevant'
-                  }, {
-                     name: opts.indexName + '_price_asc', label: 'Lowest price'
-                  }, {
-                     name: opts.indexName + '_price_desc', label: 'Highest price'
-                  }]
-               }),
-               instantsearch.widgets.pagination({
-                  container: '#pagination',
-                  scrollTo: '#search-input'
-               }),
-               instantsearch.widgets.refinementList({
-                  container: '#category',
-                  attributeName: 'team',
-                  limit: 10,
-                  operator: 'or',
-                  templates: {
-                     header: getHeader('Category')
-                  }
-               }),
-               instantsearch.widgets.refinementList({
-                  container: '#brand',
-                  attributeName: 'winter',
-                  limit: 10,
-                  operator: 'or',
-                  templates: {
-                     header: getHeader('Brand')
-                  }
-               }),
-               instantsearch.widgets.rangeSlider({
-                  container: '#price',
-                  attributeName: 'spring',
-                  templates: {
-                     header: getHeader('Price')
-                  }
-               }),
-               instantsearch.widgets.menu({
-                  container: '#type',
-                  attributeName: 'type',
-                  limit: 10,
-                  templates: {
-                     header: getHeader('Type')
-                  }
-               })
-            ];
+          var widgets = [
+             instantsearch.widgets.searchBox({
+                container: '#search-input',
+                placeholder: 'Search for products'
+             }),
+             instantsearch.widgets.hits({
+                container: '#hits',
+                hitsPerPage: 10,
+                templates: {
+                   item: getTemplate('hit'),
+                   empty: getTemplate('no-results')
+                }
+             }),
+             instantsearch.widgets.stats({
+                container: '#stats'
+             }),
+             instantsearch.widgets.sortBySelector({
+                container: '#sort-by',
+                autoHideContainer: true,
+                indices: [{
+                   name: opts.indexName, label: 'Most relevant'
+                }, {
+                   name: opts.indexName + '_price_asc', label: 'Lowest price'
+                }, {
+                   name: opts.indexName + '_price_desc', label: 'Highest price'
+                }]
+             }),
+             instantsearch.widgets.pagination({
+                container: '#pagination',
+                scrollTo: '#search-input'
+             }),
+             instantsearch.widgets.refinementList({
+                container: '#category',
+                attributeName: 'team',
+                limit: 10,
+                operator: 'or',
+                templates: {
+                   header: getHeader('Category')
+                }
+             }),
+             instantsearch.widgets.refinementList({
+                container: '#brand',
+                attributeName: 'winter',
+                limit: 10,
+                operator: 'or',
+                templates: {
+                   header: getHeader('Brand')
+                }
+             }),
+             instantsearch.widgets.rangeSlider({
+                container: '#price',
+                attributeName: 'spring',
+                templates: {
+                   header: getHeader('Price')
+                }
+             }),
+             instantsearch.widgets.menu({
+                container: '#type',
+                attributeName: 'type',
+                limit: 10,
+                templates: {
+                   header: getHeader('Type')
+                }
+             })
+          ];
 
-            widgets.forEach(search.addWidget, search);
-            search.start();
-         }
+          widgets.forEach(search.addWidget, search);
+          search.start();
+       }
 
-         function getTemplate(templateName) {
-            return document.querySelector('#' + templateName + '-template').innerHTML;
-         }
+       function getTemplate(templateName) {
+          return document.querySelector('#' + templateName + '-template').innerHTML;
+       }
 
-         function getHeader(title) {
-            return '<h5>' + title + '</h5>';
-         }
-      </script>
-
+       function getHeader(title) {
+          return '<h5>' + title + '</h5>';
+       }
+    </script>
 ---
-
 
     <div id="search-input"></div>
     <div id="search-input-icon"></div>

@@ -2,88 +2,36 @@
 layout: default
 pagename: search
 css-script: |
- - script: |
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
-js-scripts: 
- - script: 
-       <script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
-        <script src="//cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
- - script: |
- - script: |
-      <script>
-         var search = instantsearch({
-            appId: '3KQ06K58YX',
-            apiKey: 'e728c9c463e0490e3fa4fa1df75878f6',
-            indexName: 'phed-courses'
-         });
-
-         search.addWidget(
-            instantsearch.widgets.searchBox({
-               container: '#search-box',
-               placeholder: 'Αναζήτηση μαθημάτων'
-            })
-         );
-
-         search.addWidget(
-            instantsearch.widgets.hits({
-               container: '#hits-container',
-               templates: {
-                  empty: 'No results',
-                  item: '<div class="groupby-items"><div class="groupby-title">{{{_highlightResult.course.value}}}</div> <div class="categories-etefaa"><a href="{{url}}" >e-tefaa</a></div></div>'
-               },
-               hitsPerPage: 15
-            })
-         );
-     
-         search.addWidget(
-            instantsearch.widgets.pagination({
-               container: '#pagination-container'
-            })
-         );         
-         search.addWidget(
-           instantsearch.widgets.refinementList({
-               container: '#odigos2013',
-               attributeName: 'year-odigos2013',
-               limit: 15,
-               operator: 'or',
-               sortBy: ['name:asc'],
-               templates: {
-                  header: 'Οδηγός 2013-2014'
-               }
-           })
-         );
-         search.addWidget(
-           instantsearch.widgets.refinementList({
-               container: '#odigos2015',
-               attributeName: 'year-odigos2015',
-               limit: 15,
-               operator: 'or',
-               sortBy: ['name:asc'],
-               templates: {
-                  header: 'Οδηγός 2015-2016'
-               }
-           })
-         );
-         search.addWidget(
-            instantsearch.widgets.clearAll({
-               container: '#clear-all',
-               templates: {
-                  link: 'Reset everything'
-               },
-               autoHideContainer: false
-            })
-         );
-         
-         search.addWidget(
-            instantsearch.widgets.stats({
-               container: '#stats-container'
-            })
-         );
-         
-         search.start();
-      </script>
-
+  - script: |
+     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+js-scripts:
+- script: <script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+    <script src="//cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
+- script: ''
+- script: "<script>\n   var search = instantsearch({\n      appId: '3KQ06K58YX',\n
+    \     apiKey: 'e728c9c463e0490e3fa4fa1df75878f6',\n      indexName: 'phed-courses'\n
+    \  });\n\n   search.addWidget(\n      instantsearch.widgets.searchBox({\n         container:
+    '#search-box',\n         placeholder: 'Αναζήτηση μαθημάτων'\n      })\n   );\n\n
+    \  search.addWidget(\n      instantsearch.widgets.hits({\n         container:
+    '#hits-container',\n         templates: {\n            empty: 'No results',\n
+    \           item: '<div class=\"groupby-items\"><div class=\"groupby-title\">{{{_highlightResult.course.value}}}</div>
+    <div class=\"categories-etefaa\"><a href=\"{{url}}\" >e-tefaa</a></div></div>'\n
+    \        },\n         hitsPerPage: 15\n      })\n   );\n\n   search.addWidget(\n
+    \     instantsearch.widgets.pagination({\n         container: '#pagination-container'\n
+    \     })\n   );         \n   search.addWidget(\n     instantsearch.widgets.refinementList({\n
+    \        container: '#odigos2013',\n         attributeName: 'year-odigos2013',\n
+    \        limit: 15,\n         operator: 'or',\n         sortBy: ['name:asc'],\n
+    \        templates: {\n            header: 'Οδηγός 2013-2014'\n         }\n     })\n
+    \  );\n   search.addWidget(\n     instantsearch.widgets.refinementList({\n         container:
+    '#odigos2015',\n         attributeName: 'year-odigos2015',\n         limit: 15,\n
+    \        operator: 'or',\n         sortBy: ['name:asc'],\n         templates:
+    {\n            header: 'Οδηγός 2015-2016'\n         }\n     })\n   );\n   search.addWidget(\n
+    \     instantsearch.widgets.clearAll({\n         container: '#clear-all',\n         templates:
+    {\n            link: 'Reset everything'\n         },\n         autoHideContainer:
+    false\n      })\n   );\n   \n   search.addWidget(\n      instantsearch.widgets.stats({\n
+    \        container: '#stats-container'\n      })\n   );\n   \n   search.start();\n</script>\n"
 ---
+
 <!--  
             search.addWidget(
               instantsearch.widgets.refinementList({

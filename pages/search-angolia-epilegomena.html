@@ -2,55 +2,30 @@
 layout: default
 pagename: search
 css-script: |
- - script: |
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
-js-scripts: 
- - script: |
-       <script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
-       <script src="//cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
- - script: |
-      <script>
-         var search = instantsearch({
-            appId: '3KQ06K58YX',
-            apiKey: 'e728c9c463e0490e3fa4fa1df75878f6',
-            indexName: 'phed-epilegomena'
-         });
-
-         search.addWidget(
-            instantsearch.widgets.searchBox({
-               container: '#search-box',
-               placeholder: 'Αναζήτηση μαθημάτων'
-            })
-         );
-
-         search.addWidget(
-            instantsearch.widgets.hits({
-               container: '#hits-container',
-               templates: {
-                  empty: 'No results',
-                  item: '<div class="groupby-items"> <div class="groupby-details"> <div id="{{#winter}}{{id-winter}}{{/winter}}{{^winter}}{{ id-spring}}{{/winter}}" class="groupby-title"> {{#id-winter}} <a href="/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-winter}}"> {{{_highlightResult.course.value}}}</a> {{/id-winter}} {{^id-winter}} <a href="/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-spring}}"> {{{_highlightResult.course.value}}}</a> {{/id-winter}} </div> </div> </div>'
-               },
-               hitsPerPage: 20
-            })
-         );
-     
-         search.addWidget(
-            instantsearch.widgets.pagination({
-               container: '#pagination-container'
-            })
-         );         
-         search.addWidget(
-           instantsearch.widgets.refinementList({
-              container: '#team',
-               attributeName: 'team',
-               limit: 20,
-               operator: 'or'
-           })
-         );
-         search.start();
-      </script>
-
+  - script: |
+     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+js-scripts:
+- script: |
+    <script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+    <script src="//cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
+- script: "<script>\n   var search = instantsearch({\n      appId: '3KQ06K58YX',\n
+    \     apiKey: 'e728c9c463e0490e3fa4fa1df75878f6',\n      indexName: 'phed-epilegomena'\n
+    \  });\n\n   search.addWidget(\n      instantsearch.widgets.searchBox({\n         container:
+    '#search-box',\n         placeholder: 'Αναζήτηση μαθημάτων'\n      })\n   );\n\n
+    \  search.addWidget(\n      instantsearch.widgets.hits({\n         container:
+    '#hits-container',\n         templates: {\n            empty: 'No results',\n
+    \           item: '<div class=\"groupby-items\"> <div class=\"groupby-details\">
+    <div id=\"{{#winter}}{{id-winter}}{{/winter}}{{^winter}}{{ id-spring}}{{/winter}}\"
+    class=\"groupby-title\"> {{#id-winter}} <a href=\"/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-winter}}\">
+    {{{_highlightResult.course.value}}}</a> {{/id-winter}} {{^id-winter}} <a href=\"/pages/epilegomena/epilegomena-onefile-allsemester/#{{id-spring}}\">
+    {{{_highlightResult.course.value}}}</a> {{/id-winter}} </div> </div> </div>'\n
+    \        },\n         hitsPerPage: 20\n      })\n   );\n\n   search.addWidget(\n
+    \     instantsearch.widgets.pagination({\n         container: '#pagination-container'\n
+    \     })\n   );         \n   search.addWidget(\n     instantsearch.widgets.refinementList({\n
+    \       container: '#team',\n         attributeName: 'team',\n         limit:
+    20,\n         operator: 'or'\n     })\n   );\n   search.start();\n</script>\n"
 ---
+
 <!--  
             search.addWidget(
               instantsearch.widgets.refinementList({
